@@ -48,6 +48,7 @@
 #define Editor_TextFont APP_FONT
 #define Editor_TextSize APP_FONT_SIZE
 #define Editor_CJKFont ((Fl_Font)(FL_FREE_FONT + 1))
+#define Editor_ArabicFont ((Fl_Font)(FL_FREE_FONT + 2))
 
 
 #define Version "Ver 0.8 4/24/2026"
@@ -184,41 +185,41 @@ static const TranslationEntry translations[] = {
   {"Manage Favorites", "إدارة المفضلة", "管理收藏夹", "Favorieten beheren", "Manage Favorites", "Gérer les favoris", "Favoriten verwalten", "Gestisci preferiti", "Zarządzaj ulubionymi", "Gerir favoritos", "Управление избранным", "Administrar favoritos", "Favorileri yönet"},
   {"File Systems", "أنظمة الملفات", "文件系统", "Bestandssystemen", "File Systems", "Systèmes de fichiers", "Dateisysteme", "File system", "Systemy plików", "Sistemas de ficheiros", "Файловые системы", "Sistemas de archivos", "Dosya sistemleri"},
   {"Please choose an existing file!", "يرجى اختيار ملف موجود!", "请选择一个现有文件！", "Kies een bestaand bestand!", "Please choose an existing file!", "Veuillez choisir un fichier existant !", "Bitte wählen Sie eine vorhandene Datei aus!", "Seleziona un file esistente!", "Wybierz istniejący plik!", "Escolha um ficheiro existente!", "Выберите существующий файл!", "¡Elija un archivo existente!", "Lütfen mevcut bir dosya seçin!"},
-  {"The current file has not been saved.\nWould you like to save it now?", "Bieżący plik nie został zapisany.\nCzy chcesz go teraz zapisać?", "当前文件尚未保存。\n是否现在保存？", "Het huidige bestand is niet opgeslagen.\nWilt u het nu opslaan?", "The current file has not been saved.\nWould you like to save it now?", "Le fichier actuel n'a pas été enregistré.\nVoulez-vous l'enregistrer maintenant ?", "Die aktuelle Datei wurde nicht gespeichert.\nMöchten Sie sie jetzt speichern?", "Il file corrente non è stato salvato.\nVuoi salvarlo ora?", "Bieżący plik nie został zapisany.\nCzy chcesz go teraz zapisać?", "O ficheiro atual não foi guardado.\nDeseja guardá-lo agora?", "Текущий файл не был сохранён.\nСохранить его сейчас?", "El archivo actual no se ha guardado.\n¿Desea guardarlo ahora?", "Geçerli dosya kaydedilmedi.\nŞimdi kaydetmek istiyor musunuz?"},
+  {"The current file has not been saved.\nWould you like to save it now?", "لم يتم حفظ الملف الحالي.\nهل تريد حفظه الآن؟", "当前文件尚未保存。\n是否现在保存？", "Het huidige bestand is niet opgeslagen.\nWilt u het nu opslaan?", "The current file has not been saved.\nWould you like to save it now?", "Le fichier actuel n'a pas été enregistré.\nVoulez-vous l'enregistrer maintenant ?", "Die aktuelle Datei wurde nicht gespeichert.\nMöchten Sie sie jetzt speichern?", "Il file corrente non è stato salvato.\nVuoi salvarlo ora?", "Bieżący plik nie został zapisany.\nCzy chcesz go teraz zapisać?", "O ficheiro atual não foi guardado.\nDeseja guardá-lo agora?", "Текущий файл не был сохранён.\nСохранить его сейчас?", "El archivo actual no se ha guardado.\n¿Desea guardarlo ahora?", "Geçerli dosya kaydedilmedi.\nŞimdi kaydetmek istiyor musunuz?"},
   {"Save", "حفظ", "保存", "Opslaan", "Save", "Enregistrer", "Speichern", "Salva", "Zapisz", "Guardar", "Сохранить", "Guardar", "Kaydet"},
   {"Don't Save", "لا تحفظ", "不保存", "Niet opslaan", "Don't Save", "Ne pas enregistrer", "Nicht speichern", "Non salvare", "Nie zapisuj", "Não guardar", "Не сохранять", "No guardar", "Kaydetme"},
-  {"Error reading from file '%s':\n%s.", "Błąd odczytu pliku '%s':\n%s.", "读取文件 '%s' 时出错：\n%s。", "Fout bij lezen van bestand '%s':\n%s.", "Error reading from file '%s':\n%s.", "Erreur de lecture du fichier '%s' :\n%s.", "Fehler beim Lesen der Datei '%s':\n%s.", "Errore durante la lettura del file '%s':\n%s.", "Błąd odczytu pliku '%s':\n%s.", "Erro ao ler o ficheiro '%s':\n%s.", "Ошибка чтения файла '%s':\n%s.", "Error al leer el archivo '%s':\n%s.", "'%s' dosyası okunurken hata oluştu:\n%s."},
-  {"Error writing to file '%s':\n%s.", "Błąd zapisu pliku '%s':\n%s.", "写入文件 '%s' 时出错：\n%s。", "Fout bij schrijven naar bestand '%s':\n%s.", "Error writing to file '%s':\n%s.", "Erreur d'écriture dans le fichier '%s' :\n%s.", "Fehler beim Schreiben der Datei '%s':\n%s.", "Errore durante la scrittura del file '%s':\n%s.", "Błąd zapisu pliku '%s':\n%s.", "Erro ao escrever no ficheiro '%s':\n%s.", "Ошибка записи файла '%s':\n%s.", "Error al escribir en el archivo '%s':\n%s.", "'%s' dosyasına yazılırken hata oluştu:\n%s."},
+  {"Error reading from file '%s':\n%s.", "خطأ في قراءة الملف '%s':\n%s.", "读取文件 '%s' 时出错：\n%s。", "Fout bij lezen van bestand '%s':\n%s.", "Error reading from file '%s':\n%s.", "Erreur de lecture du fichier '%s' :\n%s.", "Fehler beim Lesen der Datei '%s':\n%s.", "Errore durante la lettura del file '%s':\n%s.", "Błąd odczytu pliku '%s':\n%s.", "Erro ao ler o ficheiro '%s':\n%s.", "Ошибка чтения файла '%s':\n%s.", "Error al leer el archivo '%s':\n%s.", "'%s' dosyası okunurken hata oluştu:\n%s."},
+  {"Error writing to file '%s':\n%s.", "خطأ في كتابة الملف '%s':\n%s.", "写入文件 '%s' 时出错：\n%s。", "Fout bij schrijven naar bestand '%s':\n%s.", "Error writing to file '%s':\n%s.", "Erreur d'écriture dans le fichier '%s' :\n%s.", "Fehler beim Schreiben der Datei '%s':\n%s.", "Errore durante la scrittura del file '%s':\n%s.", "Błąd zapisu pliku '%s':\n%s.", "Erro ao escrever no ficheiro '%s':\n%s.", "Ошибка записи файла '%s':\n%s.", "Error al escribir en el archivo '%s':\n%s.", "'%s' dosyasına yazılırken hata oluştu:\n%s."},
   {"Search String:", "نص البحث:", "查找内容:", "Zoektekst:", "Search String:", "Texte à rechercher :", "Suchtext:", "Testo da cercare:", "Szukany tekst:", "Texto a procurar:", "Строка поиска:", "Texto a buscar:", "Aranacak metin:"},
-  {"No occurrences of '%s' found!", "Nie znaleziono wystąpień '%s'!", "未找到 '%s' 的任何匹配项！", "Geen voorkomens van '%s' gevonden!", "No occurrences of '%s' found!", "Aucune occurrence de '%s' n'a été trouvée !", "Keine Vorkommen von '%s' gefunden!", "Nessuna occorrenza di '%s' trovata!", "Nie znaleziono wystąpień '%s'!", "Nenhuma ocorrência de '%s' encontrada!", "Вхождения '%s' не найдены!", "No se encontraron coincidencias de '%s'.", "'%s' için hiç eşleşme bulunamadı!"},
+  {"No occurrences of '%s' found!", "لم يتم العثور على أي ظهور لـ '%s'!", "未找到 '%s' 的任何匹配项！", "Geen voorkomens van '%s' gevonden!", "No occurrences of '%s' found!", "Aucune occurrence de '%s' n'a été trouvée !", "Keine Vorkommen von '%s' gefunden!", "Nessuna occorrenza di '%s' trovata!", "Nie znaleziono wystąpień '%s'!", "Nenhuma ocorrência de '%s' encontrada!", "Вхождения '%s' не найдены!", "No se encontraron coincidencias de '%s'.", "'%s' için hiç eşleşme bulunamadı!"},
   {"Untitled", "بدون عنوان", "未命名", "Naamloos", "Untitled", "Sans titre", "Unbenannt", "Senza titolo", "Bez tytułu", "Sem título", "Без имени", "Sin título", "Adsız"},
-  {" (modified)", " (zmodyfikowany)", "（已修改）", " (gewijzigd)", " (modified)", " (modifié)", " (geändert)", " (modificato)", " (zmodyfikowany)", " (modificado)", " (изменён)", " (modificado)", " (değiştirildi)"},
-  {"Open File?", "Otworzyć plik?", "打开文件？", "Bestand openen?", "Open File?", "Ouvrir un fichier ?", "Datei öffnen?", "Aprire il file?", "Otworzyć plik?", "Abrir ficheiro?", "Открыть файл?", "¿Abrir archivo?", "Dosya açılsın mı?"},
-  {"Insert File?", "Wstawić plik?", "插入文件？", "Bestand invoegen?", "Insert File?", "Insérer un fichier ?", "Datei einfügen?", "Inserire il file?", "Wstawić plik?", "Inserir ficheiro?", "Вставить файл?", "¿Insertar archivo?", "Dosya eklensin mi?"},
-  {"Replaced %d occurrences.", "Zamieniono %d wystąpień.", "已替换 %d 处。", "%d voorkomens vervangen.", "Replaced %d occurrences.", "%d occurrences remplacées.", "%d Vorkommen ersetzt.", "Sostituite %d occorrenze.", "Zamieniono %d wystąpień.", "%d ocorrências substituídas.", "Заменено %d вхождений.", "Se reemplazaron %d coincidencias.", "%d eşleşme değiştirildi."},
-  {"Save File As?", "Zapisać plik jako?", "另存为？", "Bestand opslaan als?", "Save File As?", "Enregistrer le fichier sous ?", "Datei speichern unter?", "Salvare il file come?", "Zapisać plik jako?", "Guardar ficheiro como?", "Сохранить файл как?", "¿Guardar archivo como?", "Dosya farklı kaydedilsin mi?"},
-  {"&File", "&Plik", "文件(&F)", "&Bestand", "&File", "&Fichier", "&Datei", "&File", "&Plik", "&Ficheiro", "&Файл", "&Archivo", "&Dosya"},
-  {"&New File", "&Nowy plik", "新建文件(&N)", "&Nieuw bestand", "&New File", "&Nouveau fichier", "&Neue Datei", "&Nuovo file", "&Nowy plik", "&Novo ficheiro", "&Новый файл", "&Nuevo archivo", "&Yeni dosya"},
-  {"&Open File...", "&Otwórz plik...", "打开文件(&O)...", "Bestand &openen...", "&Open File...", "&Ouvrir un fichier...", "Datei ö&ffnen...", "&Apri file...", "&Otwórz plik...", "&Abrir ficheiro...", "&Открыть файл...", "&Abrir archivo...", "&Dosya aç..."},
-  {"&Insert File...", "&Wstaw plik...", "插入文件(&I)...", "Bestand &invoegen...", "&Insert File...", "&Insérer un fichier...", "Datei &einfügen...", "&Inserisci file...", "&Wstaw plik...", "&Inserir ficheiro...", "Вст&авить файл...", "&Insertar archivo...", "&Dosya ekle..."},
-  {"&Save File", "&Zapisz plik", "保存文件(&S)", "Bestand op&slaan", "&Save File", "&Enregistrer le fichier", "Datei &speichern", "&Salva file", "&Zapisz plik", "&Guardar ficheiro", "&Сохранить файл", "&Guardar archivo", "&Dosyayı kaydet"},
-  {"Save File &As...", "Zapisz plik &jako...", "文件另存为(&A)...", "Bestand opslaan &als...", "Save File &As...", "Enregistrer le fichier &sous...", "Datei speichern &unter...", "Salva file &come...", "Zapisz plik &jako...", "Guardar ficheiro &como...", "Сохранить файл &как...", "Guardar archivo &como...", "Dosyayı farklı &kaydet..."},
-  {"New &View", "Nowy &widok", "新建视图(&V)", "Nieuwe &weergave", "New &View", "Nouvelle &vue", "Neue &Ansicht", "Nuova &vista", "Nowy &widok", "Nova &vista", "Новое пре&дставление", "Nueva &vista", "Yeni &görünüm"},
-  {"&Close View", "Za&mknij widok", "关闭视图(&C)", "Weergave s&luiten", "&Close View", "&Fermer la vue", "Ansicht &schließen", "&Chiudi vista", "Za&mknij widok", "&Fechar vista", "&Закрыть вид", "&Cerrar vista", "Görünümü &kapat"},
-  {"E&xit", "&Zakończ", "退出(&X)", "A&fsluiten", "E&xit", "&Quitter", "B&eenden", "&Esci", "&Zakończ", "&Sair", "&Выход", "&Salir", "Çı&kış"},
-  {"&Edit", "&Edycja", "编辑(&E)", "Be&werken", "&Edit", "&Édition", "&Bearbeiten", "&Modifica", "&Edycja", "&Editar", "&Правка", "&Editar", "Dü&zen"},
-  {"Cu&t", "Wy&tnij", "剪切(&T)", "Kni&ppen", "Cu&t", "Cou&per", "Aussch&neiden", "Ta&glia", "Wy&tnij", "Cor&tar", "Выре&зать", "Cor&tar", "K&es"},
-  {"&Copy", "&Kopiuj", "复制(&C)", "&Kopiëren", "&Copy", "Co&pier", "&Kopieren", "&Copia", "&Kopiuj", "&Copiar", "&Копировать", "&Copiar", "K&opyala"},
-  {"&Paste", "Wk&lej", "粘贴(&P)", "P&lakken", "&Paste", "Co&ller", "&Einfügen", "Incoll&a", "Wk&lej", "Co&lar", "Вст&авить", "&Pegar", "Ya&pıştır"},
-  {"&Delete", "&Usuń", "删除(&D)", "Verwij&deren", "&Delete", "&Supprimer", "&Löschen", "&Elimina", "&Usuń", "&Eliminar", "&Удалить", "&Eliminar", "&Sil"},
-  {"Line &Numbers ", "Numery &wierszy", "行号(&N)", "Regel&nummers", "Line &Numbers ", "Numéros de &ligne", "Zeilen&nummern", "Numeri di &riga", "Numery &wierszy", "Números de &linha", "Номера &строк", "Números de &línea", "Satır &numaraları"},
-  {"Word Wrap", "Zawijanie wierszy", "自动换行", "Regelafbreking", "Word Wrap", "Retour automatique à la ligne", "Zeilenumbruch", "A capo automatico", "Zawijanie wierszy", "Quebra automática de linha", "Перенос строк", "Ajuste de línea", "Satır kaydırma"},
-  {"&Search", "&Szukaj", "搜索(&S)", "&Zoeken", "&Search", "&Recherche", "&Suchen", "&Cerca", "&Szukaj", "&Pesquisar", "&Поиск", "&Buscar", "&Ara"},
-  {"&Find...", "&Znajdź...", "查找(&F)...", "&Zoeken...", "&Find...", "&Rechercher...", "&Suchen...", "&Trova...", "&Znajdź...", "&Localizar...", "&Найти...", "&Buscar...", "&Bul..."},
-  {"F&ind Again", "Znajdź &ponownie", "再次查找(&I)", "Opnieuw v&inden", "F&ind Again", "Rechercher de nouveau", "Erneut su&chen", "Trova anc&ora", "Znajdź &ponownie", "Localizar novam&ente", "Найти &снова", "Buscar de n&uevo", "Tekrar bu&l"},
-  {"&Replace...", "&Zamień...", "替换(&R)...", "Ve&rvangen...", "&Replace...", "Rem&placer...", "&Ersetzen...", "&Sostituisci...", "&Zamień...", "&Substituir...", "&Заменить...", "&Reemplazar...", "D&eğiştir..."},
-  {"Re&place Again", "Zamień p&onownie", "再次替换(&P)", "Opnieuw ver&vangen", "Re&place Again", "Re&mplacer à nouveau", "Erneut erset&zen", "Sostituisci anc&ora", "Zamień p&onownie", "Substituir novam&ente", "Заменить с&нова", "Reemplazar de n&uevo", "Tekrar d&eğiştir"},
-  {"&Version", "&Wersja", "版本(&V)", "&Versie", "&Version", "&Version", "&Version", "&Versione", "&Wersja", "&Versão", "&Версия", "&Versión", "&Sürüm"}
+  {" (modified)", " (معدّل)", "（已修改）", " (gewijzigd)", " (modified)", " (modifié)", " (geändert)", " (modificato)", " (zmodyfikowany)", " (modificado)", " (изменён)", " (modificado)", " (değiştirildi)"},
+  {"Open File?", "فتح الملف؟", "打开文件？", "Bestand openen?", "Open File?", "Ouvrir un fichier ?", "Datei öffnen?", "Aprire il file?", "Otworzyć plik?", "Abrir ficheiro?", "Открыть файл?", "¿Abrir archivo?", "Dosya açılsın mı?"},
+  {"Insert File?", "إدراج الملف؟", "插入文件？", "Bestand invoegen?", "Insert File?", "Insérer un fichier ?", "Datei einfügen?", "Inserire il file?", "Wstawić plik?", "Inserir ficheiro?", "Вставить файл?", "¿Insertar archivo?", "Dosya eklensin mi?"},
+  {"Replaced %d occurrences.", "تم استبدال %d من المواضع.", "已替换 %d 处。", "%d voorkomens vervangen.", "Replaced %d occurrences.", "%d occurrences remplacées.", "%d Vorkommen ersetzt.", "Sostituite %d occorrenze.", "Zamieniono %d wystąpień.", "%d ocorrências substituídas.", "Заменено %d вхождений.", "Se reemplazaron %d coincidencias.", "%d eşleşme değiştirildi."},
+  {"Save File As?", "حفظ الملف باسم؟", "另存为？", "Bestand opslaan als?", "Save File As?", "Enregistrer le fichier sous ?", "Datei speichern unter?", "Salvare il file come?", "Zapisać plik jako?", "Guardar ficheiro como?", "Сохранить файл как?", "¿Guardar archivo como?", "Dosya farklı kaydedilsin mi?"},
+  {"&File", "&ملف", "文件(&F)", "&Bestand", "&File", "&Fichier", "&Datei", "&File", "&Plik", "&Ficheiro", "&Файл", "&Archivo", "&Dosya"},
+  {"&New File", "ملف &جديد", "新建文件(&N)", "&Nieuw bestand", "&New File", "&Nouveau fichier", "&Neue Datei", "&Nuovo file", "&Nowy plik", "&Novo ficheiro", "&Новый файл", "&Nuevo archivo", "&Yeni dosya"},
+  {"&Open File...", "&فتح ملف...", "打开文件(&O)...", "Bestand &openen...", "&Open File...", "&Ouvrir un fichier...", "Datei ö&ffnen...", "&Apri file...", "&Otwórz plik...", "&Abrir ficheiro...", "&Открыть файл...", "&Abrir archivo...", "&Dosya aç..."},
+  {"&Insert File...", "إ&دراج ملف...", "插入文件(&I)...", "Bestand &invoegen...", "&Insert File...", "&Insérer un fichier...", "Datei &einfügen...", "&Inserisci file...", "&Wstaw plik...", "&Inserir ficheiro...", "Вст&авить файл...", "&Insertar archivo...", "&Dosya ekle..."},
+  {"&Save File", "&حفظ الملف", "保存文件(&S)", "Bestand op&slaan", "&Save File", "&Enregistrer le fichier", "Datei &speichern", "&Salva file", "&Zapisz plik", "&Guardar ficheiro", "&Сохранить файл", "&Guardar archivo", "&Dosyayı kaydet"},
+  {"Save File &As...", "حفظ الملف &باسم...", "文件另存为(&A)...", "Bestand opslaan &als...", "Save File &As...", "Enregistrer le fichier &sous...", "Datei speichern &unter...", "Salva file &come...", "Zapisz plik &jako...", "Guardar ficheiro &como...", "Сохранить файл &как...", "Guardar archivo &como...", "Dosyayı farklı &kaydet..."},
+  {"New &View", "&عرض جديد", "新建视图(&V)", "Nieuwe &weergave", "New &View", "Nouvelle &vue", "Neue &Ansicht", "Nuova &vista", "Nowy &widok", "Nova &vista", "Новое пре&дставление", "Nueva &vista", "Yeni &görünüm"},
+  {"&Close View", "إ&غلاق العرض", "关闭视图(&C)", "Weergave s&luiten", "&Close View", "&Fermer la vue", "Ansicht &schließen", "&Chiudi vista", "Za&mknij widok", "&Fechar vista", "&Закрыть вид", "&Cerrar vista", "Görünümü &kapat"},
+  {"E&xit", "&خروج", "退出(&X)", "A&fsluiten", "E&xit", "&Quitter", "B&eenden", "&Esci", "&Zakończ", "&Sair", "&Выход", "&Salir", "Çı&kış"},
+  {"&Edit", "&تحرير", "编辑(&E)", "Be&werken", "&Edit", "&Édition", "&Bearbeiten", "&Modifica", "&Edycja", "&Editar", "&Правка", "&Editar", "Dü&zen"},
+  {"Cu&t", "&قص", "剪切(&T)", "Kni&ppen", "Cu&t", "Cou&per", "Aussch&neiden", "Ta&glia", "Wy&tnij", "Cor&tar", "Выре&зать", "Cor&tar", "K&es"},
+  {"&Copy", "&نسخ", "复制(&C)", "&Kopiëren", "&Copy", "Co&pier", "&Kopieren", "&Copia", "&Kopiuj", "&Copiar", "&Копировать", "&Copiar", "K&opyala"},
+  {"&Paste", "&لصق", "粘贴(&P)", "P&lakken", "&Paste", "Co&ller", "&Einfügen", "Incoll&a", "Wk&lej", "Co&lar", "Вст&авить", "&Pegar", "Ya&pıştır"},
+  {"&Delete", "&حذف", "删除(&D)", "Verwij&deren", "&Delete", "&Supprimer", "&Löschen", "&Elimina", "&Usuń", "&Eliminar", "&Удалить", "&Eliminar", "&Sil"},
+  {"Line &Numbers ", "أرقام الأ&سطر ", "行号(&N)", "Regel&nummers", "Line &Numbers ", "Numéros de &ligne", "Zeilen&nummern", "Numeri di &riga", "Numery &wierszy", "Números de &linha", "Номера &строк", "Números de &línea", "Satır &numaraları"},
+  {"Word Wrap", "التفاف الكلمات", "自动换行", "Regelafbreking", "Word Wrap", "Retour automatique à la ligne", "Zeilenumbruch", "A capo automatico", "Zawijanie wierszy", "Quebra automática de linha", "Перенос строк", "Ajuste de línea", "Satır kaydırma"},
+  {"&Search", "&بحث", "搜索(&S)", "&Zoeken", "&Search", "&Recherche", "&Suchen", "&Cerca", "&Szukaj", "&Pesquisar", "&Поиск", "&Buscar", "&Ara"},
+  {"&Find...", "&بحث...", "查找(&F)...", "&Zoeken...", "&Find...", "&Rechercher...", "&Suchen...", "&Trova...", "&Znajdź...", "&Localizar...", "&Найти...", "&Buscar...", "&Bul..."},
+  {"F&ind Again", "بحث &مرة أخرى", "再次查找(&I)", "Opnieuw v&inden", "F&ind Again", "Rechercher de nouveau", "Erneut su&chen", "Trova anc&ora", "Znajdź &ponownie", "Localizar novam&ente", "Найти &снова", "Buscar de n&uevo", "Tekrar bu&l"},
+  {"&Replace...", "است&بدال...", "替换(&R)...", "Ve&rvangen...", "&Replace...", "Rem&placer...", "&Ersetzen...", "&Sostituisci...", "&Zamień...", "&Substituir...", "&Заменить...", "&Reemplazar...", "D&eğiştir..."},
+  {"Re&place Again", "استبدال مرة أ&خرى", "再次替换(&P)", "Opnieuw ver&vangen", "Re&place Again", "Re&mplacer à nouveau", "Erneut erset&zen", "Sostituisci anc&ora", "Zamień p&onownie", "Substituir novam&ente", "Заменить с&нова", "Reemplazar de n&uevo", "Tekrar d&eğiştir"},
+  {"&Version", "&الإصدار", "版本(&V)", "&Versie", "&Version", "&Version", "&Version", "&Versione", "&Wersja", "&Versão", "&Версия", "&Versión", "&Sürüm"}
 };
 
 static const char *tr(const char *key) {
@@ -264,8 +265,10 @@ static const char *tr(const char *key) {
 //   TextEdit.browserSelection:    #6AA835
 //   TextEdit.inputSelection:      #6AA835
 //   TextEdit.scrollbarBackground: #3c3b37
+//   TextEdit.scrollbarThumb:      #3c3b37
 //   TextEdit.scrollbarArrow:      #3c3b37
 //   TextEdit.cjkFont:             WenQuanYi Micro Hei
+//   TextEdit.arabicFont:          DejaVu Sans
 //
 // The parser also accepts XMenu.<key> aliases, for example:
 //   XMenu.background:             #3c3b37
@@ -277,17 +280,18 @@ struct AppColors {
   Fl_Color menu_background, menu_foreground, menu_selection;
   Fl_Color checkbox_background, checkbox_selection;
   Fl_Color browser_selection, input_selection;
-  Fl_Color scrollbar_background, scrollbar_arrow;
+  Fl_Color scrollbar_background, scrollbar_thumb, scrollbar_arrow;
   int have_background, have_background2, have_foreground, have_selection;
   int have_text_background, have_text_foreground, have_text_selection;
   int have_menu_background, have_menu_foreground, have_menu_selection;
   int have_checkbox_background, have_checkbox_selection;
   int have_browser_selection, have_input_selection;
-  int have_scrollbar_background, have_scrollbar_arrow;
+  int have_scrollbar_background, have_scrollbar_thumb, have_scrollbar_arrow;
 };
 
 static AppColors app_colors = {0};
 static char app_cjk_font_name[256] = "WenQuanYi Micro Hei";
+static char app_arabic_font_name[256] = "DejaVu Sans";
 
 static char *trim_space(char *s) {
   while (*s && isspace((unsigned char)*s)) ++s;
@@ -342,6 +346,10 @@ static void set_string_resource(const char *key, const char *value) {
     strncpy(app_cjk_font_name, value, sizeof(app_cjk_font_name) - 1);
     app_cjk_font_name[sizeof(app_cjk_font_name) - 1] = 0;
   }
+  if (!strcmp(name, "arabicFont") && value && *value) {
+    strncpy(app_arabic_font_name, value, sizeof(app_arabic_font_name) - 1);
+    app_arabic_font_name[sizeof(app_arabic_font_name) - 1] = 0;
+  }
 }
 
 static void set_color_resource(const char *key, Fl_Color color) {
@@ -361,6 +369,7 @@ static void set_color_resource(const char *key, Fl_Color color) {
   else if (!strcmp(name, "browserSelection")) { app_colors.browser_selection = color; app_colors.have_browser_selection = 1; }
   else if (!strcmp(name, "inputSelection")) { app_colors.input_selection = color; app_colors.have_input_selection = 1; }
   else if (!strcmp(name, "scrollbarBackground")) { app_colors.scrollbar_background = color; app_colors.have_scrollbar_background = 1; }
+  else if (!strcmp(name, "scrollbarThumb")) { app_colors.scrollbar_thumb = color; app_colors.have_scrollbar_thumb = 1; }
   else if (!strcmp(name, "scrollbarArrow")) { app_colors.scrollbar_arrow = color; app_colors.have_scrollbar_arrow = 1; }
 }
 
@@ -377,7 +386,8 @@ static void load_color_resources_from_file(const char *path) {
     char *key = trim_space(p);
     char *value = trim_space(colon + 1);
     if (!strncmp(key, "TextEdit.", 9) || !strncmp(key, "XMenu.", 6)) {
-      if (!strcmp(resource_name_tail(key), "cjkFont")) {
+      if (!strcmp(resource_name_tail(key), "cjkFont") ||
+          !strcmp(resource_name_tail(key), "arabicFont")) {
         set_string_resource(key, value);
         continue;
       }
@@ -447,6 +457,7 @@ static void apply_app_colors(Fl_Widget *w) {
   Fl_Scrollbar *scrollbar = dynamic_cast<Fl_Scrollbar *>(w);
   if (scrollbar) {
     if (app_colors.have_scrollbar_background) scrollbar->color(app_colors.scrollbar_background);
+    if (app_colors.have_scrollbar_thumb) scrollbar->selection_color(app_colors.scrollbar_thumb);
     if (app_colors.have_scrollbar_arrow) scrollbar->labelcolor(app_colors.scrollbar_arrow);
     else if (app_colors.have_scrollbar_background) scrollbar->labelcolor(app_colors.scrollbar_background);
   }
@@ -483,6 +494,7 @@ static void init_app_fonts() {
   Fl::set_font(FL_SCREEN, "DejaVu Sans:style=Book");
   Fl::set_font(FL_SCREEN_BOLD, "DejaVu Sans:style=Bold");
   Fl::set_font(Editor_CJKFont, app_cjk_font_name);
+  Fl::set_font(Editor_ArabicFont, app_arabic_font_name);
 
   FL_NORMAL_SIZE = APP_FONT_SIZE;
 }
@@ -602,6 +614,7 @@ static void apply_filechooser_selection_colors(Fl_Widget *w) {
   Fl_Scrollbar *scrollbar = dynamic_cast<Fl_Scrollbar *>(w);
   if (scrollbar) {
     if (app_colors.have_scrollbar_background) scrollbar->color(app_colors.scrollbar_background);
+    if (app_colors.have_scrollbar_thumb) scrollbar->selection_color(app_colors.scrollbar_thumb);
     if (app_colors.have_scrollbar_arrow) scrollbar->labelcolor(app_colors.scrollbar_arrow);
     else if (app_colors.have_scrollbar_background) scrollbar->labelcolor(app_colors.scrollbar_background);
   }
@@ -870,7 +883,8 @@ Fl_Text_Buffer     *stylebuf = 0;
 
 static Fl_Text_Display::Style_Table_Entry text_style_table[] = {
   { FL_BLACK, Editor_TextFont, Editor_TextSize },
-  { FL_BLACK, Editor_CJKFont, Editor_TextSize }
+  { FL_BLACK, Editor_CJKFont, Editor_TextSize },
+  { FL_BLACK, Editor_ArabicFont, Editor_TextSize }
 };
 
 static unsigned int utf8_decode_char(const char *s, int len, int *used) {
@@ -908,8 +922,18 @@ static int is_cjk_codepoint(unsigned int cp) {
          (cp >= 0xff00 && cp <= 0xffef);
 }
 
+static int is_arabic_codepoint(unsigned int cp) {
+  return (cp >= 0x0600 && cp <= 0x06ff) ||
+         (cp >= 0x0750 && cp <= 0x077f) ||
+         (cp >= 0x08a0 && cp <= 0x08ff) ||
+         (cp >= 0xfb50 && cp <= 0xfdff) ||
+         (cp >= 0xfe70 && cp <= 0xfeff);
+}
+
 static char style_for_codepoint(unsigned int cp) {
-  return is_cjk_codepoint(cp) ? 'B' : 'A';
+  if (is_cjk_codepoint(cp)) return 'B';
+  if (is_arabic_codepoint(cp)) return 'C';
+  return 'A';
 }
 
 static void restyle_text_buffer() {
@@ -1515,7 +1539,8 @@ Fl_Window* new_view() {
     w->editor->buffer(textbuf);
     text_style_table[0].color = app_colors.have_text_foreground ? app_colors.text_foreground : FL_BLACK;
     text_style_table[1].color = app_colors.have_text_foreground ? app_colors.text_foreground : FL_BLACK;
-    w->editor->highlight_data(stylebuf, text_style_table, 2, 'A', 0, 0);
+    text_style_table[2].color = app_colors.have_text_foreground ? app_colors.text_foreground : FL_BLACK;
+    w->editor->highlight_data(stylebuf, text_style_table, 3, 'A', 0, 0);
     w->editor->textfont(Editor_TextFont);
     w->editor->textsize(Editor_TextSize);
     apply_app_colors(w);
