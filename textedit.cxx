@@ -624,6 +624,25 @@ static void centered_button_cb(Fl_Widget *w, void *data) {
   w->window()->hide();
 }
 
+static void save_prompt_cancel_cb(Fl_Widget *w, void *data) {
+  int *value = (int *)data;
+  *value = 0;
+  w->window()->hide();
+}
+
+static void save_prompt_save_cb(Fl_Widget *w, void *data) {
+  int *value = (int *)data;
+  *value = 1;
+  w->window()->hide();
+}
+
+static void save_prompt_dont_save_cb(Fl_Widget *w, void *data) {
+  int *value = (int *)data;
+  *value = 2;
+  w->window()->hide();
+}
+
+
 static int centered_choice(Fl_Window *parent, const char *message,
                            const char *b0, const char *b1, const char *b2) {
   int result = -1;
@@ -654,6 +673,43 @@ static int centered_choice(Fl_Window *parent, const char *message,
   dontsave.labelsize(APP_FONT_SIZE);
   dontsave.user_data((void *)2);
   dontsave.callback(centered_button_cb, &result);
+
+  apply_app_colors(&dlg);
+  dlg.end();
+  center_window_on_parent(&dlg, parent);
+  dlg.show();
+  while (dlg.shown()) Fl::wait();
+  return result;
+}
+
+
+static int unsaved_changes_choice(Fl_Window *parent) {
+  int result = 0;
+  Fl_Window dlg(380, 130, "");
+  dlg.set_modal();
+  dlg.labelfont(APP_FONT);
+  dlg.labelsize(APP_FONT_SIZE);
+
+  Fl_Box msg(15, 12, 350, 55,
+             tr("The current file has not been saved.\nWould you like to save it now?"));
+  msg.labelfont(APP_FONT);
+  msg.labelsize(APP_FONT_SIZE);
+  msg.align(FL_ALIGN_CENTER | FL_ALIGN_INSIDE | FL_ALIGN_WRAP);
+
+  Fl_Button cancel(15, 92, 110, 26, tr("Cancel"));
+  cancel.labelfont(APP_FONT);
+  cancel.labelsize(APP_FONT_SIZE);
+  cancel.callback(save_prompt_cancel_cb, &result);
+
+  Fl_Return_Button save(135, 92, 110, 26, tr("Save"));
+  save.labelfont(APP_FONT);
+  save.labelsize(APP_FONT_SIZE);
+  save.callback(save_prompt_save_cb, &result);
+
+  Fl_Button dontsave(255, 92, 110, 26, tr("Don't Save"));
+  dontsave.labelfont(APP_FONT);
+  dontsave.labelsize(APP_FONT_SIZE);
+  dontsave.callback(save_prompt_dont_save_cb, &result);
 
   apply_app_colors(&dlg);
   dlg.end();
@@ -1002,19 +1058,28 @@ EditorWindow::~EditorWindow() {
   delete replace_dlg;
 }
 
+static int save_current_file(void);
+
+static void discard_changes(void) {
+  changed = 0;
+  textbuf->call_modify_callbacks();
+}
+
 int check_save(void) {
   if (!changed) return 1;
 
-  int r = centered_choice(app_dialog_parent(),
-                          tr("The current file has not been saved.\nWould you like to save it now?"),
-                          tr("Cancel"), tr("Save"), tr("Don't Save"));
+  int r = unsaved_changes_choice(app_dialog_parent());
 
   if (r == 1) {
-    save_cb(); // Save the file...
-    return !changed;
+    return save_current_file();
   }
 
-  return (r == 2) ? 1 : 0;
+  if (r == 2) {
+    discard_changes();
+    return 1;
+  }
+
+  return 0;
 }
 
 int loading = 0;
@@ -1037,16 +1102,18 @@ void load_file(char *newfile, int ipos) {
   textbuf->call_modify_callbacks();
 }
 
-void save_file(char *newfile) {
+int save_file(char *newfile) {
   if (textbuf->savefile(newfile)) {
     char msg[512];
     snprintf(msg, sizeof(msg), tr("Error writing to file '%s':\n%s."), newfile, strerror(errno));
     centered_message(app_dialog_parent(), msg);
+    return 0;
   }
-  else
-    strcpy(filename, newfile);
+
+  if (newfile != filename) strcpy(filename, newfile);
   changed = 0;
   textbuf->call_modify_callbacks();
+  return 1;
 }
 
 void copy_cb(Fl_Widget*, void* v) {
@@ -1294,20 +1361,30 @@ void replcan_cb(Fl_Widget*, void* v) {
   e->replace_dlg->hide();
 }
 
-void save_cb() {
+static int saveas_file(void) {
+  char *newfile = app_file_chooser(tr("Save File As?"), "*", filename, Fl_File_Chooser::CREATE);
+  if (newfile == NULL) return 0;
+
+  int ok = save_file(newfile);
+  free(newfile);
+  return ok;
+}
+
+static int save_current_file(void) {
   if (filename[0] == '\0') {
     // No filename - get one!
-    saveas_cb();
-    return;
+    return saveas_file();
   }
-  else save_file(filename);
+
+  return save_file(filename);
+}
+
+void save_cb() {
+  save_current_file();
 }
 
 void saveas_cb() {
-  char *newfile;
-
-  newfile = app_file_chooser(tr("Save File As?"), "*", filename, Fl_File_Chooser::CREATE);
-  if (newfile != NULL) { save_file(newfile); free(newfile); }
+  saveas_file();
 }
 
 Fl_Window* new_view();
