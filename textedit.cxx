@@ -83,6 +83,9 @@ const int line_num_width = 40;
 #include <string.h>
 #include <ctype.h>
 #include <errno.h>
+#include <signal.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include <string>
 
 #ifdef __MWERKS__
@@ -1557,6 +1560,18 @@ Fl_Window* new_view() {
 }
 
 int main(int argc, char **argv) {
+
+  if (argc > 2) {
+    signal(SIGCHLD, SIG_IGN);
+    for (int i = 2; i < argc; i++) {
+      pid_t pid = fork();
+      if (pid == 0) {
+        execlp(argv[0], argv[0], argv[i], (char *)0);
+        _exit(127);
+      }
+    }
+    argc = 2;
+  }
 
   app_lang = detect_app_language();
   load_color_resources_from_file("/usr/share/X11/app-defaults/TextEdit");
